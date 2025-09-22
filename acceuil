@@ -1,0 +1,18 @@
+import requests
+from bs4 import BeautifulSoup
+
+url='http://www.sigma.tn/Fr/accueil_46_9'
+r=requests.get(url)
+html_doc=r.text
+soup=BeautifulSoup(html_doc,'html.parser')
+pretty_soup=soup.prettify()
+
+sigma_title=soup.title
+print(sigma_title)
+
+'''sigma_text=soup.get_text
+print(sigma_text)'''
+
+a_tags=soup.find_all('a')
+for link in a_tags:
+    print(link.get('href'))
